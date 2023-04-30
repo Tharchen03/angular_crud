@@ -1,0 +1,12 @@
+<ul>
+    <!-- for upper casing {{person.toLocaleUpperCase()}}-->
+    <li  *ngFor="let person of personslist;let i = index" >{{person.toLocaleUpperCase()}} 
+        <a class="mx-2" style="cursor: pointer;" (click)="getclickedperson(person)">
+            <i class="fa fa-trash"></i>
+        </a>
+        <a class="mx-2" style="cursor: pointer;" (click)="clickedindex(i)" >
+            <i class="fa fa-edit"></i>
+        </a>
+        
+        </li>       
+</ul>

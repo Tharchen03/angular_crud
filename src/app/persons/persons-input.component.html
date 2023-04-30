@@ -1,0 +1,9 @@
+
+<label for="personname" class="form-label">Person name</label>         
+<input  type="text" class="form-control" id="personname" name="personname" [(ngModel)]="personname" >
+
+<button *ngIf="!isEdit" type ="button" class="bnt bnt-primary my-2" (click)="getPersonName()" >Create Person</button>
+<button *ngIf="isEdit" type ="button" class="bnt bnt-primary my-2" (click)="editName()" >Edit Person</button>
+
+
+

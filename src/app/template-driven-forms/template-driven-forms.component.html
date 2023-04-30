@@ -1,0 +1,134 @@
+<form #loginform="ngForm" (ngSubmit)="submitForm(loginform.value)"> 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Name</label>         
+                <input  type="text" class="form-control" id="name" name="username"
+                 #username="ngModel" 
+                [(ngModel)]="userData.username"  
+                required 
+                [class.is-invalid]="username.invalid && username.touched">
+              </div>
+              <small class="text-danger" *ngIf="username.invalid && username.touched" >This field is required</small>
+           
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <label for="name" class="form-label">Email</label>         
+                  <input  type="email" class="form-control" id="email" name="email"
+                   #email="ngModel" 
+                  [(ngModel)]="userData.email"  
+                  required 
+                  [class.is-invalid]="email.invalid && email.touched"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+                <div *ngIf="email.errors && email.touched">
+                  <small class="text-danger" *ngIf="email.errors['required']" >This field is required</small>
+                  <small class="text-danger" *ngIf="email.errors['pattern']" >email pattern</small>
+                </div>
+                
+             
+              </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" #password="ngModel" 
+                    [(ngModel)]="userData.password" 
+                    required 
+                    [class.is-invalid]="password.invalid && password.touched" 
+                    minlength="4">
+                  </div>
+                  <div *ngIf="password.errors && password.touched">
+                    <small class="text-danger" *ngIf="password.errors['required']">password field is required</small>
+                    <small class="text-danger" *ngIf="password.errors['minlength']">minimum 4 character field is required</small>
+                  </div>
+                  
+            </div>
+            <div class="row my-4">
+              <div class="col-md-6">
+                <label for="select" class="form-label">Select</label>
+                 <select class="form-select" aria-label="Default select example" id="select" 
+                 name="country" #country="ngModel" [(ngModel)]="userData.country"
+                 required="">
+
+                   <!-- option calling -->
+                    <option *ngFor="let country of countries">{{country}}</option>
+                 </select>
+                 <small *ngIf="country.invalid && country.touched" class="text-danger">This field is required</small>
+              </div>
+            </div>
+          <!-- radio -->
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="male" #gender="ngModel" [(ngModel)]="userData.gender">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Male
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="female" #gender="ngModel"  [(ngModel)]="userData.gender">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Female
+              </label>
+            </div>
+            <!-- check box -->
+            <br>
+            <div>
+              <input class="form-check-input" type="checkbox" id="checkboxNoLabel" 
+              name="Rember_me" value="checkbox" aria-label="..." #Rember_me="ngModel" [(ngModel)]="userData.Rember_me">&nbsp;&nbsp;
+              <label>Rember me </label>
+            </div>
+            
+            <div class="row my-4">
+              <div class="col-md-6">
+                 <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-dark">Login</button>
+              </div>
+            </div>
+       
+    </div>
+    
+  </form>
+
+
+
+  
+  <!-- 
+  references
+    < key press event -->
+  <!-- <div class="row"> -->
+    <!-- <div class="col-md-6">
+      < ngmodel one  way property binding-->  
+        <!-- <label for="name" class="form-label">Name</label> -->
+        <!-- <input #keyPressInput type="text" class="form-control" id="name" (keypress)="keyPressEvent(keyPressInput.value)" [value]="enteredvalue">   
+        -->
+        <!-- ngmodel two  way property binding--> 
+        <!-- <input #keyPressInput type="text" class="form-control" id="name" [(ngModel)]="enteredvalue">
+      </div> -->
+      <!-- show entered value -->
+          <!-- <small>{{enteredvalue}}</small>
+    </div> -->
+<!-- loginform console
+    <form #loginform="ngForm" (ngSubmit)="submitForm(loginform.value)"> 
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-6">
+                  <label for="name" class="form-label">Name</label>         
+                  <input  type="text" class="form-control" id="name" name="username" ngModel>
+                </div>
+             
+              </div>             
+              <div class="row">
+                  <div class="col-md-6">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" ngModel>
+                    </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-6">
+                   <button type="submit" class="btn btn-dark">Login</button>
+                </div>
+              </div>        
+      </div>      
+    </form> -->
+  

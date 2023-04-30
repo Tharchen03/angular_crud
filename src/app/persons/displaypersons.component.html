@@ -1,0 +1,21 @@
+<!-- <[isEdit], [personname], (getclickedevent),(getclickededitindex)> -->
+<!-- <div class="m-5">
+    <person-input [personname]="editperson" [isEdit]="isEdit"
+    (getEnteredValue)="getPersonName($event)"
+     (getEditValue)="getEditValue($event)"></person-input>
+    <br>
+    
+    <person-list (getclickedevent)="getclickedName($event)" 
+    [personslist]="personArray" (getclickededitindex)="geteditindex($event)"></person-list>
+
+</div> -->
+
+<!-- <[isEdit], [personname], (getclickedevent),(getclickededitindex)> -->
+<div class="m-5">
+    <person-input [personname]="editperson" [isEdit]="isEdit"></person-input>
+    <br>
+    
+    <person-list
+    [personslist]="personArray"></person-list>
+
+</div>

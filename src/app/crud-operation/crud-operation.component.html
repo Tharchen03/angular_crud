@@ -1,0 +1,108 @@
+<!-- <p>crud-operation works!</p>
+
+<label for="personname" class="form-label">Person name</label>         
+<input  type="text" class="form-control" id="personname" name="personname" [(ngModel)]="personname" >
+
+<button *ngIf="!isEdit" type ="button" class="bnt bnt-primary my-2" (click)="getPersonName()" >Create Person</button>
+<button *ngIf="isEdit" type ="button" class="bnt bnt-primary my-2" (click)="editName()" >Edit Person</button>
+<ul> -->
+    <!-- for upper casing -->
+    <!-- <li  *ngFor="let person of personArray;let i = index" >
+        {{person.toLocaleUpperCase()}} 
+        <a class="mx-2" style="cursor: pointer;" (click)="clickedpersondelete(person)">
+            <i class="fa fa-trash"></i>
+        </a>
+        <a class="mx-2" style="cursor: pointer;" (click)="clickedindexedit(i)">
+            <i class="fa fa-edit"></i>
+        </a>
+        
+        </li>       
+</ul> -->
+
+
+<form [formGroup]="userform" (ngSubmit)="onsubmit()" class="m-4"  > 
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-6">
+                <label for="personname" class="form-label">Person Name</label>         
+                <input  type="text" class="form-control" id="personname"  formControlName="personname">
+            </div> 
+        </div>            
+            <div class="row my-4">
+                <div class="col-md-6">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="age" formControlName="age" >
+                  </div>                  
+            </div>
+             <!-- radio -->
+             <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="male" formControlName="gender" >
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Male
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="female"  formControlName="gender">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Female
+                </label>
+              </div>
+              <!-- check box -->
+              <br>
+              <div>
+                <input class="form-check-input" type="checkbox" id="checkboxNoLabel" name="Rember_me" value="checkbox" formControlName="Rember_me">&nbsp;&nbsp;
+                <label>Rember me </label>
+              </div>
+           
+            <div class="row my-4">
+              <div class="col-md-6">
+                 <button *ngIf="!isEdit" type="submit" class="btn btn-dark"  >Create USer</button>
+                 <!-- <button *ngIf="!isEdit" type="submit" class="btn btn-dark" (Click)="createuser()" >Create USer</button> -->
+                 &nbsp;&nbsp;&nbsp;&nbsp;              
+                <button *ngIf="isEdit" type="submit" class="btn btn-dark" >Edit USer</button>                
+              </div>
+            </div>      
+    </div>
+</form>
+<div  class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Rember_me</th>
+            <th scope="col">ActionS</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let item of user">
+            <td>{{item.personname}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.gender}}</td>
+            <td><a href ="#" (click)="editthis()">Edit</a>|<a href="#" (click)="deletethis()">Delete</a></td>
+          </tr> -->
+          <tr *ngFor="let person of personArray; let i = index">
+            <th scope="row">{{i}}</th>
+              <td>{{person.personname}}</td>
+              <td>{{person.age}}</td>
+              <td>{{person.gender}}</td>
+              <td>{{person.Rember_me? 'Yes' : 'No'}}</td>
+              <td>
+                 <a class="mx-2" style="cursor:pointer;" (click)="deletedata(person.personname)">
+                    <i class="fa fa-trash"></i>
+                 </a>
+
+                 <a class="mx-2" style="cursor:pointer;" (click)="editdata(i)">
+                      <i class="fa fa-edit"></i>
+                 </a>
+              </td>
+           </tr>
+    
+        </tbody>
+       </table>
+
+</div>
+
